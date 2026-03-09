@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONE PIECE CARD GAME - Card List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ONE PIECE CARD GAME - Card List</h1>
+  </header>
+  <section class="filters">
+    <h2>Search Filters</h2>
+    <label>Color:
+      <select id="colorFilter">
+        <option>All</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+        <option>Purple</option>
+        <option>Black</option>
+        <option>Yellow</option>
+        <option>Multicolor</option>
+      </select>
+    </label>
+    <label>Card Type:
+      <select id="typeFilter">
+        <option>All</option>
+        <option>Leader</option>
+        <option>Character</option>
+        <option>Stage</option>
+        <option>Event</option>
+      </select>
+    </label>
+    <label>Illustration Type:
+      <select id="illustrationFilter">
+        <option>All</option>
+        <option>Comic</option>
+        <option>Animation</option>
+        <option>Original Illustrations</option>
+        <option>Other</option>
+      </select>
+    </label>
+  </section>
+
+  <input type="text" id="searchInput" placeholder="Search cards by name..." />
+  <p id="resultCount">Showing all cards</p>
+
+  <section class="card-grid" id="cardGrid">
+    <!-- Karte se naložijo tukaj iz JS -->
+  </section>
+
+  <div id="cardPopup" class="popup hidden">
+    <div class="popup-content">
+        <!--
+            <span class="close-btn" onclick="closePopup()">×</span>
+        -->
+  
+      <!-- Header -->
+       <!--
+      
+       -->
+       <div class="popup-header">
+         <div class="card-id"></div>
+         <h2 id="popupTitle" class="popup-title"></h2>
+       </div>
+  
+      <!-- Body -->
+      <div class="popup-body">
+        <!-- Card Image -->
+        <div class="popup-image">
+          <img id="popupImage" src="" alt="Card Image" />
+        </div>
+  
+        <!-- Card Details -->
+        <div class="popup-info">
+          <div class="popup-row"><strong>Cost:</strong> <span id="popupCost"></span></div>
+          <div class="popup-row"><strong>Attribute:</strong> <span id="popupAttribute">Slash</span></div>
+          <div class="popup-row"><strong>Power:</strong> <span id="popupPower"></span></div>
+          <div class="popup-row"><strong>Counter:</strong> <span id="popupCounter"></span></div>
+          <div class="popup-row"><strong>Color:</strong> <span id="popupColor"></span></div>
+          <div class="popup-row"><strong>Type:</strong><br><span id="popupType"></span></div>
+          <div class="popup-row"><strong>Effect:</strong><br><span id="popupEffect"></span></div>
+          <div class="popup-row card-set-box">
+            <strong>Card Set(s)</strong><br>
+            <span id="popupSet"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+  <!--
+  
+  -->
+  <script>
+    
+</script>
+</body>
+</html>
