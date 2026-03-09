@@ -1,0 +1,110 @@
+# One Piece Card List — Phase 2 Feature Upgrades
+
+All features are **frontend-only** (no server). Data persists via `localStorage`. Features that require a backend (Price Tracker, Login, Tier Lists, Ruling FAQs, Popularity stats) are out of scope.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Price Tracker** (TCGPlayer/Cardmarket) requires a backend proxy — CORS blocks direct browser calls. Skipping for now.
+> **Login / My Collection sync** requires auth — implemented with local-only localStorage instead.
+
+---
+
+## Proposed Changes
+
+### Data Layer
+
+#### [MODIFY] [cards.json](file:///d:/AntigravityProj/One-Piece-Card-List/data/cards.json)
+- Add [set](file:///d:/AntigravityProj/One-Piece-Card-List/scripts/script.js#303-324) field: `"OP-09"`, `"OP-08"`, `"OP-01"`, `"OP-10"` parsed from existing IDs
+- Add `crew` array: `["Red-Haired Pirates", "The Four Emperors"]`
+
+---
+
+### Architecture — New Tab Nav System
+
+#### [MODIFY] [index.html](file:///d:/AntigravityProj/One-Piece-Card-List/html/index.html)
+- Add **top nav tabs**: `Card List` | `My Deck` | `My Collection`
+- Tabs show/hide the relevant `<section>` — no page reload needed
+- Add **"Add to Deck"** button on each card (appears on hover strip)
+- Add **"Owned"** toggle button on each card (appears on hover strip)
+- **Deck panel** (`#deck-panel`): card list with quantities, count badge, export button, clear button
+- **Collection panel** (`#collection-panel`): owned cards grid with quantity spinners
+- Advanced filter additions to sidebar: Cost range, Power range, Set pills, Crew select
+- Grid/List view toggle button in result bar
+- Dark/Light mode toggle button in header
+
+---
+
+### CSS Additions
+
+#### [MODIFY] [style.css](file:///d:/AntigravityProj/One-Piece-Card-List/css/style.css)
+- `[data-theme="light"]` overrides for all CSS tokens → full light mode
+- Tab navigation bar styles
+- Deck panel: fixed right drawer or collapsible side panel
+- Card action buttons (+ Add to Deck, ♥ Own) on `.card-info-strip`
+- **In-deck badge**: gold pill overlay on card corner
+- **Owned badge**: green check overlay on card corner
+- Deck entry row styles (image thumbnail + name + count controls + remove)
+- Collection view: same grid but with quantity overlay
+- **Range sliders** styled for dark theme
+- List view card style (horizontal compact rows)
+
+---
+
+### JavaScript — Additions
+
+#### [MODIFY] [script.js](file:///d:/AntigravityProj/One-Piece-Card-List/scripts/script.js)
+
+**Deck Builder**
+- `deck` object: `{ leaderId: null, cards: { [id]: count } }`
+- `addToDeck(card)` — enforces: max 4 copies, 1 Leader only, Leader must be `cardType === 'Leader'`
+- `removeFromDeck(id)` — decrements or removes
+- `renderDeck()` — renders deck panel rows
+- `exportDeck()` — copies text list to clipboard
+- `saveDeck()` / `loadDeck()` — localStorage `op-deck`
+- Live deck count badge in tab label
+
+**My Collection**
+- `collection` object: `{ [id]: count }`
+- `setOwned(id, qty)` / `toggleOwned(id)`
+- `renderCollection()` — filtered grid of owned cards
+- `saveCollection()` / `loadCollection()` — localStorage `op-collection`
+- Card grid items get `.has-owned` badge when qty > 0
+- Card grid items get `.in-deck` badge when in deck > 0
+
+**Advanced Filters**
+- Cost min/max slider → `state.costMin` / `state.costMax`
+- Power min/max slider → `state.powerMin` / `state.powerMax`
+- Set filter pills → `state.set`
+- Crew filter select → `state.crew`
+- All hook into [applyFilters()](file:///d:/AntigravityProj/One-Piece-Card-List/scripts/script.js#67-106)
+
+**Related Cards in Modal**
+- When modal opens, compute cards sharing same `Type` or `crew`
+- Render compact thumbnails in modal footer row
+- Clicking a related card navigates to it
+
+**View Toggle**
+- Toggle between `.card-grid--grid` and `.card-grid--list` class on the grid
+- List view renders horizontal compact rows with all stats visible
+
+**Dark/Light Mode**
+- Button in header toggles `data-theme="light"` on `<html>`
+- Persisted in localStorage
+
+---
+
+## Verification Plan
+
+### Manual Testing
+1. Add a Leader card → verify max 1 Leader rule enforced
+2. Add 5 copies of a Character → verify capped at 4
+3. Add 50 cards → verify deck full message
+4. Export deck → verify clipboard text format
+5. Reload page → verify deck persists from localStorage
+6. Mark cards Owned → verify badge appears on card
+7. Switch to Collection tab → verify only owned cards show
+8. Use Cost range slider → verify cards filter correctly
+9. Use Set filter → verify OP-09 only shows OP-09 cards
+10. Toggle light mode → verify all panels invert cleanly
+11. Toggle list view → verify compact horizontal layout
