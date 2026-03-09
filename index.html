@@ -1,102 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ONE PIECE CARD GAME - Card List</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>ONE PIECE CARD GAME — Card Browser</title>
+  <meta name="description" content="Browse, filter, build decks and track your One Piece Card Game collection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
+
 <body>
-  <header>
-    <h1>ONE PIECE CARD GAME - Card List</h1>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-op">ONE PIECE</span>
+        <span class="logo-cg">CARD GAME</span>
+      </div>
+
+      <nav class="tab-nav" role="tablist">
+        <button class="tab-btn active" role="tab" data-tab="cards" id="tab-cards">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          Card List
+          <span class="tab-badge" id="totalBadge">0</span>
+        </button>
+        <button class="tab-btn" role="tab" data-tab="deck" id="tab-deck">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+          My Deck
+          <span class="tab-badge tab-badge--gold" id="deckBadge">0</span>
+        </button>
+        <button class="tab-btn" role="tab" data-tab="collection" id="tab-collection">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          Collection
+          <span class="tab-badge tab-badge--green" id="collectionBadge">0</span>
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"
+            height="18">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"
+            height="18">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+        <button class="icon-btn" id="viewToggle" title="Toggle grid/list view" aria-label="Toggle view">
+          <svg class="icon-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"
+            height="18">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          <svg class="icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"
+            height="18">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </header>
-  <section class="filters">
-    <h2>Search Filters</h2>
-    <label>Color:
-      <select id="colorFilter">
-        <option>All</option>
-        <option>Red</option>
-        <option>Green</option>
-        <option>Blue</option>
-        <option>Purple</option>
-        <option>Black</option>
-        <option>Yellow</option>
-        <option>Multicolor</option>
-      </select>
-    </label>
-    <label>Card Type:
-      <select id="typeFilter">
-        <option>All</option>
-        <option>Leader</option>
-        <option>Character</option>
-        <option>Stage</option>
-        <option>Event</option>
-      </select>
-    </label>
-    <label>Illustration Type:
-      <select id="illustrationFilter">
-        <option>All</option>
-        <option>Comic</option>
-        <option>Animation</option>
-        <option>Original Illustrations</option>
-        <option>Other</option>
-      </select>
-    </label>
-  </section>
 
-  <input type="text" id="searchInput" placeholder="Search cards by name..." />
-  <p id="resultCount">Showing all cards</p>
+  <!-- ===== TAB: CARD LIST ===== -->
+  <div class="tab-panel active" id="panel-cards">
+    <div class="layout">
 
-  <section class="card-grid" id="cardGrid">
-    <!-- Karte se naložijo tukaj iz JS -->
-  </section>
+      <!-- Sidebar -->
+      <aside class="filter-panel" id="filterPanel">
 
-  <div id="cardPopup" class="popup hidden">
-    <div class="popup-content">
-        <!--
-            <span class="close-btn" onclick="closePopup()">×</span>
-        -->
-  
-      <!-- Header -->
-       <!--
-      
-       -->
-       <div class="popup-header">
-         <div class="card-id"></div>
-         <h2 id="popupTitle" class="popup-title"></h2>
-       </div>
-  
-      <!-- Body -->
-      <div class="popup-body">
-        <!-- Card Image -->
-        <div class="popup-image">
-          <img id="popupImage" src="" alt="Card Image" />
-        </div>
-  
-        <!-- Card Details -->
-        <div class="popup-info">
-          <div class="popup-row"><strong>Cost:</strong> <span id="popupCost"></span></div>
-          <div class="popup-row"><strong>Attribute:</strong> <span id="popupAttribute">Slash</span></div>
-          <div class="popup-row"><strong>Power:</strong> <span id="popupPower"></span></div>
-          <div class="popup-row"><strong>Counter:</strong> <span id="popupCounter"></span></div>
-          <div class="popup-row"><strong>Color:</strong> <span id="popupColor"></span></div>
-          <div class="popup-row"><strong>Type:</strong><br><span id="popupType"></span></div>
-          <div class="popup-row"><strong>Effect:</strong><br><span id="popupEffect"></span></div>
-          <div class="popup-row card-set-box">
-            <strong>Card Set(s)</strong><br>
-            <span id="popupSet"></span>
+        <div class="filter-section">
+          <h3 class="filter-heading">Search</h3>
+          <div class="search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Name, type, effect…"
+              autocomplete="off" />
+            <button class="search-clear hidden" id="searchClear" aria-label="Clear search">✕</button>
           </div>
+        </div>
+
+        <div class="filter-section">
+          <h3 class="filter-heading">Color</h3>
+          <div class="pill-group" id="colorFilter" role="group">
+            <button class="pill pill--all active" data-value="All">All</button>
+            <button class="pill pill--red" data-value="Red"> <span class="pill-dot"></span>Red</button>
+            <button class="pill pill--green" data-value="Green"> <span class="pill-dot"></span>Green</button>
+            <button class="pill pill--blue" data-value="Blue"> <span class="pill-dot"></span>Blue</button>
+            <button class="pill pill--purple" data-value="Purple"> <span class="pill-dot"></span>Purple</button>
+            <button class="pill pill--black" data-value="Black"> <span class="pill-dot"></span>Black</button>
+            <button class="pill pill--yellow" data-value="Yellow"> <span class="pill-dot"></span>Yellow</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3 class="filter-heading">Card Type</h3>
+          <div class="pill-group" id="typeFilter" role="group">
+            <button class="pill pill--all active" data-value="All">All</button>
+            <button class="pill" data-value="Leader">Leader</button>
+            <button class="pill" data-value="Character">Character</button>
+            <button class="pill" data-value="Event">Event</button>
+            <button class="pill" data-value="Stage">Stage</button>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3 class="filter-heading">Rarity</h3>
+          <div class="pill-group" id="rarityFilter" role="group">
+            <button class="pill pill--all active" data-value="All">All</button>
+            <button class="pill pill--sec" data-value="SEC">SEC</button>
+            <button class="pill pill--sr" data-value="SR">SR</button>
+            <button class="pill pill--r" data-value="L">L</button>
+            <button class="pill" data-value="R">R</button>
+            <button class="pill" data-value="UC">UC</button>
+            <button class="pill" data-value="C">C</button>
+          </div>
+        </div>
+
+        <!-- Set filter -->
+        <div class="filter-section">
+          <h3 class="filter-heading">Set / Pack</h3>
+          <div class="pill-group" id="setFilter" role="group">
+            <button class="pill pill--all active" data-value="All">All</button>
+            <button class="pill" data-value="OP-01">OP-01</button>
+            <button class="pill" data-value="OP-08">OP-08</button>
+            <button class="pill" data-value="OP-09">OP-09</button>
+            <button class="pill" data-value="OP-10">OP-10</button>
+          </div>
+        </div>
+
+        <!-- Crew filter -->
+        <div class="filter-section">
+          <h3 class="filter-heading">Crew / Affiliation</h3>
+          <select id="crewFilter" class="sort-select">
+            <option value="All">All Crews</option>
+            <option value="Straw Hat Crew">Straw Hat Crew</option>
+            <option value="Red-Haired Pirates">Red-Haired Pirates</option>
+            <option value="Roger Pirates">Roger Pirates</option>
+            <option value="The Four Emperors">The Four Emperors</option>
+            <option value="Supernovas">Supernovas</option>
+            <option value="Kid Pirates">Kid Pirates</option>
+            <option value="King of the Pirates">King of the Pirates</option>
+          </select>
+        </div>
+
+        <!-- Cost range -->
+        <div class="filter-section">
+          <h3 class="filter-heading">Cost Range: <span id="costRangeLabel">0 – 10</span></h3>
+          <div class="range-row">
+            <input type="range" id="costMin" class="range-slider" min="0" max="10" value="0" />
+            <input type="range" id="costMax" class="range-slider" min="0" max="10" value="10" />
+          </div>
+        </div>
+
+        <!-- Power range -->
+        <div class="filter-section">
+          <h3 class="filter-heading">Power Range: <span id="powerRangeLabel">0 – 13000</span></h3>
+          <div class="range-row">
+            <input type="range" id="powerMin" class="range-slider" min="0" max="13000" step="1000" value="0" />
+            <input type="range" id="powerMax" class="range-slider" min="0" max="13000" step="1000" value="13000" />
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3 class="filter-heading">Sort By</h3>
+          <select id="sortFilter" class="sort-select">
+            <option value="default">Default</option>
+            <option value="name-asc">Name (A → Z)</option>
+            <option value="name-desc">Name (Z → A)</option>
+            <option value="power-desc">Power (High → Low)</option>
+            <option value="power-asc">Power (Low → High)</option>
+            <option value="cost-desc">Cost (High → Low)</option>
+            <option value="cost-asc">Cost (Low → High)</option>
+          </select>
+        </div>
+
+        <button class="reset-btn" id="resetFilters">↺ Reset All Filters</button>
+      </aside>
+
+      <!-- Card Section -->
+      <section class="card-section">
+        <div class="result-bar">
+          <p id="resultCount" class="result-count">Loading…</p>
+          <button class="filter-toggle-btn" id="filterToggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <line x1="4" y1="6" x2="20" y2="6" />
+              <line x1="8" y1="12" x2="16" y2="12" />
+              <line x1="11" y1="18" x2="13" y2="18" />
+            </svg>
+            Filters
+          </button>
+        </div>
+
+        <div class="card-grid" id="cardGrid" role="list">
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+          <div class="card-skeleton"></div>
+        </div>
+
+        <div class="empty-state hidden" id="emptyState">
+          <div class="empty-icon">🔍</div>
+          <h3>No cards found</h3>
+          <p>Try adjusting your filters or search term.</p>
+          <button class="reset-btn" id="emptyReset">↺ Reset Filters</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ===== TAB: DECK BUILDER ===== -->
+  <div class="tab-panel hidden" id="panel-deck">
+    <div class="deck-layout">
+
+      <!-- Deck card picker (left) -->
+      <div class="deck-picker">
+        <h2 class="panel-heading">Add Cards to Deck</h2>
+        <div class="deck-search-bar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="text" id="deckSearchInput" class="search-input" placeholder="Search cards…" autocomplete="off" />
+        </div>
+        <div class="deck-all-cards" id="deckAllCards"></div>
+      </div>
+
+      <!-- Deck list (right) -->
+      <div class="deck-panel">
+        <div class="deck-header">
+          <div>
+            <h2 class="panel-heading">My Deck</h2>
+            <p class="deck-subtitle" id="deckSubtitle">0 / 50 cards</p>
+          </div>
+          <div class="deck-actions">
+            <button class="icon-btn" id="exportDeck" title="Export deck list">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </button>
+            <button class="icon-btn" id="clearDeck" title="Clear deck">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <polyline points="3 6 5 6 21 6" />
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                <path d="M10 11v6" />
+                <path d="M14 11v6" />
+                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Deck validation bar -->
+        <div class="deck-progress">
+          <div class="deck-progress-bar">
+            <div class="deck-progress-fill" id="deckProgressFill"></div>
+          </div>
+          <div class="deck-type-counts">
+            <span id="leaderCount" class="deck-type-tag">Leader: 0/1</span>
+            <span id="characterCount" class="deck-type-tag">Characters: 0</span>
+          </div>
+        </div>
+
+        <!-- Validation messages -->
+        <div class="deck-warnings" id="deckWarnings"></div>
+
+        <!-- Leader slot -->
+        <div class="deck-section-label">Leader</div>
+        <div id="deckLeaderSlot" class="deck-leader-slot">
+          <div class="deck-empty-slot">+ Add a Leader card</div>
+        </div>
+
+        <!-- Character / other cards -->
+        <div class="deck-section-label">Characters <span id="deckCharCount"></span></div>
+        <div id="deckCardList" class="deck-card-list">
+          <div class="deck-empty-msg" id="deckEmptyMsg">No cards added yet. Click a card on the left to add it.</div>
         </div>
       </div>
     </div>
   </div>
-  
-  <script src="script.js"></script>
-  <!--
-  
-  -->
-  <script>
-    
-</script>
+
+  <!-- ===== TAB: MY COLLECTION ===== -->
+  <div class="tab-panel hidden" id="panel-collection">
+    <div class="collection-layout">
+      <div class="collection-header">
+        <h2 class="panel-heading">My Collection</h2>
+        <p class="deck-subtitle" id="collectionSubtitle">0 cards owned</p>
+        <button class="reset-btn" id="clearCollection">Clear Collection</button>
+      </div>
+
+      <div class="card-grid" id="collectionGrid" role="list">
+        <div class="collection-empty hidden" id="collectionEmpty">
+          <div class="empty-icon">📦</div>
+          <h3>No cards in collection</h3>
+          <p>Go to the Card List tab and click the ♥ on any card to add it to your collection.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <!-- ===== MODAL ===== -->
+  <div id="cardModal" class="modal" role="dialog" aria-modal="true" aria-label="Card details">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-panel">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <button class="modal-nav modal-prev" id="modalPrev" aria-label="Previous card">&#8592;</button>
+      <button class="modal-nav modal-next" id="modalNext" aria-label="Next card">&#8594;</button>
+
+      <div class="modal-image-side">
+        <div class="modal-img-wrapper">
+          <img id="modalImage" src="" alt="Card image" />
+          <div class="modal-rarity-badge" id="modalRarityBadge"></div>
+        </div>
+        <!-- Quick actions -->
+        <div class="modal-quick-actions">
+          <button class="modal-action-btn" id="modalAddDeck">+ Add to Deck</button>
+          <button class="modal-action-btn modal-action-btn--heart" id="modalToggleOwned">♥ Add to Collection</button>
+        </div>
+      </div>
+
+      <div class="modal-info-side">
+        <div class="modal-id" id="modalId"></div>
+        <h2 class="modal-name" id="modalName"></h2>
+        <div class="modal-divider"></div>
+
+        <div class="modal-stats">
+          <div class="stat-row" id="statCost">
+            <span class="stat-label">Cost</span>
+            <span class="stat-value" id="modalCost"></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Power</span>
+            <span class="stat-value stat-power" id="modalPower"></span>
+          </div>
+          <div class="stat-row" id="statCounter">
+            <span class="stat-label">Counter</span>
+            <span class="stat-value" id="modalCounter"></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Color</span>
+            <span class="stat-value" id="modalColor"></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Attribute</span>
+            <span class="stat-value" id="modalAttribute"></span>
+          </div>
+          <div class="stat-row stat-row--full">
+            <span class="stat-label">Type</span>
+            <span class="stat-value" id="modalType"></span>
+          </div>
+        </div>
+
+        <div class="modal-effect-box">
+          <span class="stat-label">Effect</span>
+          <p id="modalEffect"></p>
+        </div>
+
+        <div class="modal-set-box">
+          <span class="stat-label">Card Set</span>
+          <p id="modalSet"></p>
+        </div>
+
+        <!-- Related cards -->
+        <div class="modal-related" id="modalRelated">
+          <span class="stat-label">Related Cards</span>
+          <div class="related-cards-row" id="relatedCardsRow"></div>
+        </div>
+
+        <div class="modal-counter-nav">
+          <span id="modalPosition"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../scripts/script.js"></script>
 </body>
+
 </html>
