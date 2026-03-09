@@ -1,52 +1,198 @@
 [
-    {
-      "id": "OP09-001 | L | LEADER",
-      "name": "Shanks",
-      "image": "img/OP09-001_p1(1).png",
-      "Power": 5000,
-      "counter": "-",
-      "Color": "Red",
-      "Type": "The Four Emperors/Red-Haired Pirates",
-      "Effect": "[Once Per Turn] This effect can be activated when your opponent attacks. Give up to 1 of your opponents Leader or Character cards −1000 power during this turn.",
-      "Card Set(s)": "EMPERORS IN THE NEW WORLD- [OP-09]"
-    },
-    {
-      "id": "OP09-004 | SR | CHARACTER",
-      "name": "Shanks",
-      "image": "img/OP09-004_p2.png",
-      "Cost": 10,
-      "Power": 12000,
-      "counter": "-",
-      "Color": "Red",
-      "Type": "The Four Emperors/Red-Haired Pirates",
-      "Effect": "Give all of your opponents Characters −1000 power.[Rush] (This card can attack on the turn in which it is played.)",
-      "Card Set(s)": "EMPERORS IN THE NEW WORLD- [OP-09]",
-      "Attribute": "Slash"
-    },
-    {
-      "id": "OP09-118 | SEC | CHARACTER",
-      "name": "Gol.D.Roger",
-      "image": "img/OP09-118_p1.png",
-      "Cost": 10,
-      "Power": 13000,
-      "counter": "-",
-      "Color": "Red",
-      "Type": "King of the Pirates/Roger Pirates",
-      "Effect": "[Rush] (This card can attack on the turn in which it is played.) When your opponent activates [Blocker], if either you or your opponent has 0 Life cards, you win the game.",
-      "Card Set(s)": "EMPERORS IN THE NEW WORLD- [OP-09]",
-      "Attribute": "Slash"
-    },
-    {
-        "id": "OP08-118 | SEC | CHARACTER",
-        "name": "Silvers Rayleigh", 
-        "image": "img/OP08-118_p2.png",
-        "Cost": 8,
-        "Power": 8000,
-        "counter": "-",
-        "Color": "Red",
-        "Type": "Former Roger Pirates",
-        "Effect": "[On Play] Select up to 2 of your opponent's Characters, and give 1 Character −3000 power and the other −2000 power until the end of your opponent's next turn. Then, K.O. up to 1 of your opponent's Characters with 3000 power or less.",
-        "Card Set(s)": "TWO LEGENDS- [OP-08]",
-        "Attribute": "Slash"
-    }
-  ]
+  {
+    "id": "OP09-001",
+    "rarity": "L",
+    "cardType": "Leader",
+    "set": "OP-09",
+    "name": "Shanks",
+    "image": "../img/OP09-001_p1(1).png",
+    "Cost": null,
+    "Power": 5000,
+    "counter": "-",
+    "Color": "Red",
+    "Attribute": "-",
+    "Type": "The Four Emperors/Red-Haired Pirates",
+    "crew": [
+      "The Four Emperors",
+      "Red-Haired Pirates"
+    ],
+    "Effect": "[Once Per Turn] This effect can be activated when your opponent attacks. Give up to 1 of your opponent's Leader or Character cards −1000 power during this turn.",
+    "CardSets": "EMPERORS IN THE NEW WORLD [OP-09]"
+  },
+  {
+    "id": "OP09-002",
+    "rarity": "L",
+    "cardType": "Leader",
+    "set": "OP-09",
+    "name": "Monkey.D.Luffy",
+    "image": "../img/OP09-002_p1.png",
+    "Cost": null,
+    "Power": 5000,
+    "counter": "-",
+    "Color": "Red",
+    "Attribute": "-",
+    "Type": "Straw Hat Crew",
+    "crew": [
+      "Straw Hat Crew"
+    ],
+    "Effect": "[Activate: Main] [Once Per Turn] Give up to 1 of your Leader or Character cards +1000 power until the start of your next turn.",
+    "CardSets": "EMPERORS IN THE NEW WORLD [OP-09]"
+  },
+  {
+    "id": "OP09-004",
+    "rarity": "SR",
+    "cardType": "Character",
+    "set": "OP-09",
+    "name": "Shanks",
+    "image": "../img/OP09-004_p2.png",
+    "Cost": 10,
+    "Power": 12000,
+    "counter": "-",
+    "Color": "Red",
+    "Attribute": "Slash",
+    "Type": "The Four Emperors/Red-Haired Pirates",
+    "crew": [
+      "The Four Emperors",
+      "Red-Haired Pirates"
+    ],
+    "Effect": "Give all of your opponent's Characters −1000 power. [Rush] (This card can attack on the turn in which it is played.)",
+    "CardSets": "EMPERORS IN THE NEW WORLD [OP-09]"
+  },
+  {
+    "id": "OP09-009",
+    "rarity": "SR",
+    "cardType": "Character",
+    "set": "OP-09",
+    "name": "Lucky Roux",
+    "image": "../img/OP09-009_p1.png",
+    "Cost": 5,
+    "Power": 6000,
+    "counter": "1000",
+    "Color": "Red",
+    "Attribute": "Ranged",
+    "Type": "Red-Haired Pirates",
+    "crew": [
+      "Red-Haired Pirates"
+    ],
+    "Effect": "[On Play] K.O. up to 1 of your opponent's Characters with 3000 power or less.",
+    "CardSets": "EMPERORS IN THE NEW WORLD [OP-09]"
+  },
+  {
+    "id": "OP09-118",
+    "rarity": "SEC",
+    "cardType": "Character",
+    "set": "OP-09",
+    "name": "Gol.D.Roger",
+    "image": "../img/OP09-118_p1.png",
+    "Cost": 10,
+    "Power": 13000,
+    "counter": "-",
+    "Color": "Red",
+    "Attribute": "Slash",
+    "Type": "King of the Pirates/Roger Pirates",
+    "crew": [
+      "King of the Pirates",
+      "Roger Pirates"
+    ],
+    "Effect": "[Rush] (This card can attack on the turn in which it is played.) When your opponent activates [Blocker], if either you or your opponent has 0 Life cards, you win the game.",
+    "CardSets": "EMPERORS IN THE NEW WORLD [OP-09]"
+  },
+  {
+    "id": "OP08-118",
+    "rarity": "SEC",
+    "cardType": "Character",
+    "set": "OP-08",
+    "name": "Silvers Rayleigh",
+    "image": "../img/OP08-118_p2.png",
+    "Cost": 8,
+    "Power": 8000,
+    "counter": "-",
+    "Color": "Red",
+    "Attribute": "Slash",
+    "Type": "Former Roger Pirates",
+    "crew": [
+      "Roger Pirates"
+    ],
+    "Effect": "[On Play] Select up to 2 of your opponent's Characters, and give 1 Character −3000 power and the other −2000 power until the end of your opponent's next turn. Then, K.O. up to 1 of your opponent's Characters with 3000 power or less.",
+    "CardSets": "TWO LEGENDS [OP-08]"
+  },
+  {
+    "id": "OP01-006",
+    "rarity": "SR",
+    "cardType": "Character",
+    "set": "OP-01",
+    "name": "Roronoa Zoro",
+    "image": "../img/OP01-006_p5.png",
+    "Cost": 4,
+    "Power": 5000,
+    "counter": "-",
+    "Color": "Green",
+    "Attribute": "Slash",
+    "Type": "Supernovas/Straw Hat Crew",
+    "crew": [
+      "Supernovas",
+      "Straw Hat Crew"
+    ],
+    "Effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On K.O.] Play up to 1 {Straw Hat Crew} type card with a cost of 4 or less from your hand.",
+    "CardSets": "ROMANCE DAWN [OP-01]"
+  },
+  {
+    "id": "OP01-013",
+    "rarity": "SR",
+    "cardType": "Character",
+    "set": "OP-01",
+    "name": "Nami",
+    "image": "../img/OP01-013_p2.png",
+    "Cost": 2,
+    "Power": 2000,
+    "counter": "2000",
+    "Color": "Green",
+    "Attribute": "Special",
+    "Type": "Straw Hat Crew",
+    "crew": [
+      "Straw Hat Crew"
+    ],
+    "Effect": "[On Play] Look at up to 5 cards from the top of your deck and put them back in any order.",
+    "CardSets": "ROMANCE DAWN [OP-01]"
+  },
+  {
+    "id": "OP01-120",
+    "rarity": "SEC",
+    "cardType": "Character",
+    "set": "OP-01",
+    "name": "Monkey.D.Luffy",
+    "image": "../img/OP01-120_p2.png",
+    "Cost": 9,
+    "Power": 12000,
+    "counter": "-",
+    "Color": "Red",
+    "Attribute": "Strike",
+    "Type": "Supernovas/Straw Hat Crew",
+    "crew": [
+      "Supernovas",
+      "Straw Hat Crew"
+    ],
+    "Effect": "[Activate: Main] [Once Per Turn] K.O. up to 1 of your opponent's Characters with 5000 power or less.",
+    "CardSets": "ROMANCE DAWN [OP-01]"
+  },
+  {
+    "id": "OP10-019",
+    "rarity": "SR",
+    "cardType": "Character",
+    "set": "OP-10",
+    "name": "Eustass\"Captain\"Kid",
+    "image": "../img/OP10-019_p1.png",
+    "Cost": 5,
+    "Power": 6000,
+    "counter": "-",
+    "Color": "Purple",
+    "Attribute": "Slash",
+    "Type": "Supernovas/Kid Pirates",
+    "crew": [
+      "Supernovas",
+      "Kid Pirates"
+    ],
+    "Effect": "[On Play] Your opponent returns 1 of their Characters to their hand.",
+    "CardSets": "RISE OF THE PIRATES [OP-10]"
+  }
+]
